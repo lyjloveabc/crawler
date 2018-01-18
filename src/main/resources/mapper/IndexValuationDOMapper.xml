@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.freedom.crawler.dao.mapper.IndexValuationDOMapper">
+  <resultMap id="BaseResultMap" type="com.freedom.crawler.bean.entity.IndexValuationDO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+    <result column="request_day" jdbcType="INTEGER" property="requestDay" />
+    <result column="index_code" jdbcType="VARCHAR" property="indexCode" />
+    <result column="index_name" jdbcType="VARCHAR" property="indexName" />
+    <result column="pe" jdbcType="VARCHAR" property="pe" />
+    <result column="pb" jdbcType="VARCHAR" property="pb" />
+    <result column="pe_percentile" jdbcType="VARCHAR" property="pePercentile" />
+    <result column="pb_percentile" jdbcType="VARCHAR" property="pbPercentile" />
+    <result column="roe" jdbcType="VARCHAR" property="roe" />
+    <result column="yeild" jdbcType="VARCHAR" property="yeild" />
+    <result column="eva_type" jdbcType="VARCHAR" property="evaType" />
+    <result column="eva_type_int" jdbcType="VARCHAR" property="evaTypeInt" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="bond_yeild" jdbcType="VARCHAR" property="bondYeild" />
+    <result column="begin_at" jdbcType="VARCHAR" property="beginAt" />
+    <result column="begin_at_str" jdbcType="VARCHAR" property="beginAtStr" />
+    <result column="data_source" jdbcType="VARCHAR" property="dataSource" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, created_time, modified_time, request_day, index_code, index_name, pe, pb, pe_percentile, 
+    pb_percentile, roe, yeild, eva_type, eva_type_int, url, bond_yeild, begin_at, begin_at_str, 
+    data_source
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from crawler_index_valuation
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from crawler_index_valuation
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.freedom.crawler.bean.entity.IndexValuationDO" useGeneratedKeys="true" keyProperty="id">
+    insert into crawler_index_valuation (id, created_time, modified_time, 
+      request_day, index_code, index_name, 
+      pe, pb, pe_percentile, 
+      pb_percentile, roe, yeild, 
+      eva_type, eva_type_int, url, 
+      bond_yeild, begin_at, begin_at_str, 
+      data_source)
+    values (#{id,jdbcType=INTEGER}, #{createdTime,jdbcType=TIMESTAMP}, #{modifiedTime,jdbcType=TIMESTAMP}, 
+      #{requestDay,jdbcType=INTEGER}, #{indexCode,jdbcType=VARCHAR}, #{indexName,jdbcType=VARCHAR}, 
+      #{pe,jdbcType=VARCHAR}, #{pb,jdbcType=VARCHAR}, #{pePercentile,jdbcType=VARCHAR}, 
+      #{pbPercentile,jdbcType=VARCHAR}, #{roe,jdbcType=VARCHAR}, #{yeild,jdbcType=VARCHAR}, 
+      #{evaType,jdbcType=VARCHAR}, #{evaTypeInt,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{bondYeild,jdbcType=VARCHAR}, #{beginAt,jdbcType=VARCHAR}, #{beginAtStr,jdbcType=VARCHAR}, 
+      #{dataSource,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.freedom.crawler.bean.entity.IndexValuationDO" useGeneratedKeys="true" keyProperty="id">
+    insert into crawler_index_valuation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createdTime != null">
+        created_time,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+      <if test="requestDay != null">
+        request_day,
+      </if>
+      <if test="indexCode != null">
+        index_code,
+      </if>
+      <if test="indexName != null">
+        index_name,
+      </if>
+      <if test="pe != null">
+        pe,
+      </if>
+      <if test="pb != null">
+        pb,
+      </if>
+      <if test="pePercentile != null">
+        pe_percentile,
+      </if>
+      <if test="pbPercentile != null">
+        pb_percentile,
+      </if>
+      <if test="roe != null">
+        roe,
+      </if>
+      <if test="yeild != null">
+        yeild,
+      </if>
+      <if test="evaType != null">
+        eva_type,
+      </if>
+      <if test="evaTypeInt != null">
+        eva_type_int,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="bondYeild != null">
+        bond_yeild,
+      </if>
+      <if test="beginAt != null">
+        begin_at,
+      </if>
+      <if test="beginAtStr != null">
+        begin_at_str,
+      </if>
+      <if test="dataSource != null">
+        data_source,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requestDay != null">
+        #{requestDay,jdbcType=INTEGER},
+      </if>
+      <if test="indexCode != null">
+        #{indexCode,jdbcType=VARCHAR},
+      </if>
+      <if test="indexName != null">
+        #{indexName,jdbcType=VARCHAR},
+      </if>
+      <if test="pe != null">
+        #{pe,jdbcType=VARCHAR},
+      </if>
+      <if test="pb != null">
+        #{pb,jdbcType=VARCHAR},
+      </if>
+      <if test="pePercentile != null">
+        #{pePercentile,jdbcType=VARCHAR},
+      </if>
+      <if test="pbPercentile != null">
+        #{pbPercentile,jdbcType=VARCHAR},
+      </if>
+      <if test="roe != null">
+        #{roe,jdbcType=VARCHAR},
+      </if>
+      <if test="yeild != null">
+        #{yeild,jdbcType=VARCHAR},
+      </if>
+      <if test="evaType != null">
+        #{evaType,jdbcType=VARCHAR},
+      </if>
+      <if test="evaTypeInt != null">
+        #{evaTypeInt,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="bondYeild != null">
+        #{bondYeild,jdbcType=VARCHAR},
+      </if>
+      <if test="beginAt != null">
+        #{beginAt,jdbcType=VARCHAR},
+      </if>
+      <if test="beginAtStr != null">
+        #{beginAtStr,jdbcType=VARCHAR},
+      </if>
+      <if test="dataSource != null">
+        #{dataSource,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.freedom.crawler.bean.entity.IndexValuationDO">
+    update crawler_index_valuation
+    <set>
+      <if test="createdTime != null">
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requestDay != null">
+        request_day = #{requestDay,jdbcType=INTEGER},
+      </if>
+      <if test="indexCode != null">
+        index_code = #{indexCode,jdbcType=VARCHAR},
+      </if>
+      <if test="indexName != null">
+        index_name = #{indexName,jdbcType=VARCHAR},
+      </if>
+      <if test="pe != null">
+        pe = #{pe,jdbcType=VARCHAR},
+      </if>
+      <if test="pb != null">
+        pb = #{pb,jdbcType=VARCHAR},
+      </if>
+      <if test="pePercentile != null">
+        pe_percentile = #{pePercentile,jdbcType=VARCHAR},
+      </if>
+      <if test="pbPercentile != null">
+        pb_percentile = #{pbPercentile,jdbcType=VARCHAR},
+      </if>
+      <if test="roe != null">
+        roe = #{roe,jdbcType=VARCHAR},
+      </if>
+      <if test="yeild != null">
+        yeild = #{yeild,jdbcType=VARCHAR},
+      </if>
+      <if test="evaType != null">
+        eva_type = #{evaType,jdbcType=VARCHAR},
+      </if>
+      <if test="evaTypeInt != null">
+        eva_type_int = #{evaTypeInt,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="bondYeild != null">
+        bond_yeild = #{bondYeild,jdbcType=VARCHAR},
+      </if>
+      <if test="beginAt != null">
+        begin_at = #{beginAt,jdbcType=VARCHAR},
+      </if>
+      <if test="beginAtStr != null">
+        begin_at_str = #{beginAtStr,jdbcType=VARCHAR},
+      </if>
+      <if test="dataSource != null">
+        data_source = #{dataSource,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.freedom.crawler.bean.entity.IndexValuationDO">
+    update crawler_index_valuation
+    set created_time = #{createdTime,jdbcType=TIMESTAMP},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      request_day = #{requestDay,jdbcType=INTEGER},
+      index_code = #{indexCode,jdbcType=VARCHAR},
+      index_name = #{indexName,jdbcType=VARCHAR},
+      pe = #{pe,jdbcType=VARCHAR},
+      pb = #{pb,jdbcType=VARCHAR},
+      pe_percentile = #{pePercentile,jdbcType=VARCHAR},
+      pb_percentile = #{pbPercentile,jdbcType=VARCHAR},
+      roe = #{roe,jdbcType=VARCHAR},
+      yeild = #{yeild,jdbcType=VARCHAR},
+      eva_type = #{evaType,jdbcType=VARCHAR},
+      eva_type_int = #{evaTypeInt,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      bond_yeild = #{bondYeild,jdbcType=VARCHAR},
+      begin_at = #{beginAt,jdbcType=VARCHAR},
+      begin_at_str = #{beginAtStr,jdbcType=VARCHAR},
+      data_source = #{dataSource,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

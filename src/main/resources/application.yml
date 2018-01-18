@@ -1,0 +1,51 @@
+# base
+endpoints:
+    beans:
+        sensitive: false
+management:
+    port: 6000
+
+server:
+    compression:
+        enabled: true
+        mime-types: application/json,application/xml,text/html,text/xml,text/plain
+    port: 7000
+
+spring:
+    application:
+        name: crawler
+    output:
+        ansi:
+            enabled: always
+    profiles:
+        active: local
+    resources:
+        static-locations: classpath:/static/
+#    freemarker:
+#        allow-request-override: false
+#        allow-session-override: false
+#        cache: true
+#        charset: UTF-8
+#        check-template-location: true
+#        content-type: text/html
+#        enabled: true
+#        expose-request-attributes: false
+#        expose-session-attributes: false
+#        expose-spring-macro-helpers: true
+#        prefer-file-system-access: true
+#        settings:
+#            classic_compatible: true
+#            default_encoding: UTF-8
+#            template_update_delay: 0
+#        suffix: .ftl
+#        template-loader-path: classpath:/static/template/
+#    http:
+#        multipart:
+#            maxFileSize: -1
+#            maxRequestSize: -1
+
+mybatis:
+    mapper-locations: classpath*:/mapper/*.xml
+    type-aliases-package: com.freedom.crawler.bean.entity
+    configuration:
+        map-underscore-to-camel-case: true
