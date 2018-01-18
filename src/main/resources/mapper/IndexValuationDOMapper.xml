@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.freedom.crawler.dao.mapper.IndexValuationDOMapper">
-  <resultMap id="BaseResultMap" type="com.freedom.crawler.bean.entity.IndexValuationDO">
+<mapper namespace="thor.freedom.crawler.dao.mapper.IndexValuationDOMapper">
+  <resultMap id="BaseResultMap" type="thor.freedom.crawler.bean.entity.IndexValuationDO">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
     <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
@@ -37,7 +37,7 @@
     delete from crawler_index_valuation
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.freedom.crawler.bean.entity.IndexValuationDO" useGeneratedKeys="true" keyProperty="id">
+  <insert id="insert" parameterType="thor.freedom.crawler.bean.entity.IndexValuationDO" useGeneratedKeys="true" keyProperty="id">
     insert into crawler_index_valuation (id, created_time, modified_time, 
       request_day, index_code, index_name, 
       pe, pb, pe_percentile, 
@@ -53,7 +53,7 @@
       #{bondYeild,jdbcType=VARCHAR}, #{beginAt,jdbcType=VARCHAR}, #{beginAtStr,jdbcType=VARCHAR}, 
       #{dataSource,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.freedom.crawler.bean.entity.IndexValuationDO" useGeneratedKeys="true" keyProperty="id">
+  <insert id="insertSelective" parameterType="thor.freedom.crawler.bean.entity.IndexValuationDO" useGeneratedKeys="true" keyProperty="id">
     insert into crawler_index_valuation
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -174,7 +174,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.freedom.crawler.bean.entity.IndexValuationDO">
+  <update id="updateByPrimaryKeySelective" parameterType="thor.freedom.crawler.bean.entity.IndexValuationDO">
     update crawler_index_valuation
     <set>
       <if test="createdTime != null">
@@ -234,7 +234,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.freedom.crawler.bean.entity.IndexValuationDO">
+  <update id="updateByPrimaryKey" parameterType="thor.freedom.crawler.bean.entity.IndexValuationDO">
     update crawler_index_valuation
     set created_time = #{createdTime,jdbcType=TIMESTAMP},
       modified_time = #{modifiedTime,jdbcType=TIMESTAMP},

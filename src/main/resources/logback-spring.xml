@@ -71,7 +71,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.freedom.crawler.dao.mapper" additivity="false">
+    <logger name="thor.freedom.crawler.dao.mapper" additivity="false">
         <level value="debug"/>
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="DB"/>
