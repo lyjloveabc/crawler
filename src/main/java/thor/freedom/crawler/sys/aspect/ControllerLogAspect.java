@@ -27,7 +27,7 @@ public class ControllerLogAspect {
     private String activeProfile;
 
     //控制层切入点
-    @Pointcut("execution(* thor.freedom.crawler.controller.*.*.* (..))")
+    @Pointcut("execution(* thor.freedom.crawler.controller.*.* (..))")
     public void controllerLogPointcut() {
     }
 
