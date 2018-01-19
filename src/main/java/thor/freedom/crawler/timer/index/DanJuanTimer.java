@@ -1,7 +1,7 @@
 package thor.freedom.crawler.timer.index;
 
 import thor.freedom.crawler.bean.common.TimerScheduledCron;
-import thor.freedom.crawler.biz.danjuanapp.DanJuanBiz;
+import thor.freedom.crawler.biz.timer.DanJuanTimerBiz;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -18,7 +18,7 @@ import java.text.ParseException;
 @Slf4j
 public class DanJuanTimer {
     @Autowired
-    private DanJuanBiz danJuanBiz;
+    private DanJuanTimerBiz danJuanBiz;
 
     /**
      * 每天凌晨00:00:00获取蛋卷基金的常用指数估值数据

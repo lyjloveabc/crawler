@@ -1,5 +1,6 @@
-package thor.freedom.crawler.biz.danjuanapp;
+package thor.freedom.crawler.biz.timer;
 
+import thor.freedom.crawler.bean.common.DataSource;
 import thor.freedom.crawler.bean.dto.timer.index.DanJuanResultDTO;
 import thor.freedom.crawler.bean.dto.timer.index.IndexOfDanJuanDTO;
 import thor.freedom.crawler.bean.entity.IndexValuationDO;
@@ -23,11 +24,8 @@ import java.util.List;
  * Created by Thor on 2018/1/18.
  */
 @Service
-public class DanJuanBizImpl implements DanJuanBiz {
-    private static final String SOURCE = "蛋卷基金";
-    private static final String SOURCE_URL = "https://danjuanapp.com";
-
-    private static final String INDEX_VALUATION_URL = "https://danjuanapp.com/djapi/index_eva/dj";
+public class DanJuanTimerBizImpl implements DanJuanTimerBiz {
+    private static final String INDEX_VALUATION_URL = "https://timer.com/djapi/index_eva/dj";
 
     @Autowired
     private IndexValuationDOMapper indexValuationDOMapper;
@@ -59,7 +57,7 @@ public class DanJuanBizImpl implements DanJuanBiz {
                                 .beginAtStr(DateUtil.dateToString(DateUtil.timestampToDate(Long.parseLong(item.getBegin_at())), "yyyy-MM-dd"))
                                 .bondYeild(item.getBond_yeild())
                                 .createdTime(now)
-                                .dataSource(SOURCE)
+                                .dataSource(DataSource.DANJUAN)
                                 .evaType(item.getEva_type())
                                 .evaTypeInt(item.getEva_type_int())
                                 .indexCode(item.getIndex_code())

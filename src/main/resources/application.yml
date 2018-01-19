@@ -13,7 +13,7 @@ server:
 
 spring:
     application:
-        name: crawler
+        name: crawlerStrategy
     output:
         ansi:
             enabled: always
@@ -46,6 +46,6 @@ spring:
 
 mybatis:
     mapper-locations: classpath*:/mapper/*.xml
-    type-aliases-package: com.freedom.crawler.bean.entity
+    type-aliases-package: com.freedom.crawlerStrategy.bean.entity
     configuration:
         map-underscore-to-camel-case: true

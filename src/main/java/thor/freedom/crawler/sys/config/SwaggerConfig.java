@@ -27,7 +27,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.freedom.crawler.controller"))
+                .apis(RequestHandlerSelectors.basePackage("thor.freedom.crawlerStrategy.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .globalOperationParameters(Lists.newArrayList(

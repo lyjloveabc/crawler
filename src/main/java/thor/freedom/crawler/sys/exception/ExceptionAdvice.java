@@ -1,5 +1,6 @@
 package thor.freedom.crawler.sys.exception;
 
+import org.springframework.dao.DuplicateKeyException;
 import thor.freedom.crawler.bean.common.ResultCode;
 import thor.freedom.crawler.core.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +18,7 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Map;
 import java.util.stream.Collectors;
 

@@ -6,3 +6,4 @@ spring:
         url: jdbc:mysql://127.0.0.1:3306/freedom?characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true
         username: root
 
+crawl-storage-folder: /root

@@ -1,6 +1,6 @@
 package thor.freedom.crawler.controller;
 
-import thor.freedom.crawler.biz.danjuanapp.DanJuanBiz;
+import thor.freedom.crawler.biz.timer.DanJuanTimerBiz;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +16,7 @@ import java.text.ParseException;
 @RequestMapping("test")
 public class TestController {
     @Autowired
-    private DanJuanBiz danJuanBiz;
+    private DanJuanTimerBiz danJuanBiz;
 
     @GetMapping("iv")
     public void iv() throws IOException, ParseException {
