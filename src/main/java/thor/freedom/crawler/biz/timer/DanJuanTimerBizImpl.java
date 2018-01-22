@@ -54,6 +54,8 @@ public class DanJuanTimerBizImpl implements DanJuanTimerBiz {
         if (ObjectUtils.isEmpty(todayList) && danJuanResultDTO.getData() != null) {
             Date now = new Date();
 
+            System.out.println(now);
+
             for (IndexOfDanJuanDTO item : danJuanResultDTO.getData().getItems()) {
                 indexValuationDOMapper.insertSelective(
                         IndexValuationDO.builder()
