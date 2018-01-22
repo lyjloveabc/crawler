@@ -25,4 +25,6 @@ public interface IndexValuationDOMapper {
     @Select("select * from crawler_index_valuation where request_day = #{requestDay}")
     @ResultType(IndexValuationDO.class)
     List<IndexValuationDO> selectByRequestDay(@Param("requestDay") Integer requestDay);
+
+    List<IndexValuationDO> selectLastRequestDayByIndex(@Param("indexCodes") List<String> indexCodes);
 }

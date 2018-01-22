@@ -256,4 +256,23 @@
       data_source = #{dataSource,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <!--自定义sql-->
+  <select id="selectLastRequestDayByIndex" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from crawler_index_valuation
+    <where>
+      request_day = (select max(request_day) from crawler_index_valuation)
+      <if test="indexCodes == null or indexCodes.size == 0">
+        and id = -1
+      </if>
+      <if test="indexCodes != null and indexCodes.size > 0">
+        and index_code in
+        <foreach item="item" collection="indexCodes" open="(" separator="," close=")">
+          #{item,jdbcType=INTEGER}
+        </foreach>
+      </if>
+    </where>
+  </select>
 </mapper>

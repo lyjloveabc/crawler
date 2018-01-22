@@ -9,13 +9,13 @@ import org.springframework.stereotype.Component;
  * Created by Thor on 2018/1/19.
  */
 @Component
-public class SpringContextUtils implements ApplicationContextAware {
+public class SpringContextUtil implements ApplicationContextAware {
     private static ApplicationContext applicationContext = null;
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        if (SpringContextUtils.applicationContext == null) {
-            SpringContextUtils.applicationContext = applicationContext;
+        if (SpringContextUtil.applicationContext == null) {
+            SpringContextUtil.applicationContext = applicationContext;
         }
     }
 

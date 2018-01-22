@@ -44,7 +44,7 @@ CREATE TABLE `crawler_index_valuation` (
   COMMENT '数据开始时间文本值',
 
   `data_source`   VARCHAR(20)  NOT NULL
-  COMMENT '数据来源：蛋卷基金估值',
+  COMMENT '数据来源：蛋卷基金',
 
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk`(`request_day`, `index_code`),

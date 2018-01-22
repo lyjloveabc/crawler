@@ -5,4 +5,6 @@ package thor.freedom.crawler.bean.common;
  */
 public interface TimerScheduledCron {
     String CRAWL_INDEX_VALUATION = "0 0 0 * * ?";
+
+    String INDEX_VALUATION_WARN = "0 0 9 * * ?";
 }

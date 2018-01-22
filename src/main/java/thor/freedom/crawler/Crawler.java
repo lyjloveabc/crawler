@@ -5,8 +5,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import thor.freedom.crawler.sys.SpringContextUtils;
+import thor.freedom.crawler.sys.SpringContextUtil;
 
 /**
  * Created by Thor on 2018/1/18.
@@ -15,13 +16,14 @@ import thor.freedom.crawler.sys.SpringContextUtils;
 @ServletComponentScan
 @MapperScan(basePackages = {"thor.freedom.crawler.dao.mapper"})
 @EnableTransactionManagement
+@EnableAsync
 public class Crawler {
     public static void main(String[] args) {
         SpringApplication.run(Crawler.class, args);
     }
 
     @Bean
-    public SpringContextUtils springContextUtils() {
-        return new SpringContextUtils();
+    public SpringContextUtil springContextUtils() {
+        return new SpringContextUtil();
     }
 }

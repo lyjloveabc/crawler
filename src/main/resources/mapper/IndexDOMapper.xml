@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="thor.freedom.crawler.dao.mapper.IndexDOMapper">
+  <resultMap id="BaseResultMap" type="thor.freedom.crawler.bean.entity.IndexDO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+    <result column="index_code" jdbcType="VARCHAR" property="indexCode" />
+    <result column="index_name" jdbcType="VARCHAR" property="indexName" />
+    <result column="is_followed" jdbcType="TINYINT" property="isFollowed" />
+    <result column="data_source" jdbcType="VARCHAR" property="dataSource" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, created_time, modified_time, index_code, index_name, is_followed, data_source
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from crawler_index
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from crawler_index
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="thor.freedom.crawler.bean.entity.IndexDO" useGeneratedKeys="true" keyProperty="id">
+    insert into crawler_index (id, created_time, modified_time, 
+      index_code, index_name, is_followed, 
+      data_source)
+    values (#{id,jdbcType=INTEGER}, #{createdTime,jdbcType=TIMESTAMP}, #{modifiedTime,jdbcType=TIMESTAMP}, 
+      #{indexCode,jdbcType=VARCHAR}, #{indexName,jdbcType=VARCHAR}, #{isFollowed,jdbcType=TINYINT}, 
+      #{dataSource,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="thor.freedom.crawler.bean.entity.IndexDO" useGeneratedKeys="true" keyProperty="id">
+    insert into crawler_index
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createdTime != null">
+        created_time,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+      <if test="indexCode != null">
+        index_code,
+      </if>
+      <if test="indexName != null">
+        index_name,
+      </if>
+      <if test="isFollowed != null">
+        is_followed,
+      </if>
+      <if test="dataSource != null">
+        data_source,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="indexCode != null">
+        #{indexCode,jdbcType=VARCHAR},
+      </if>
+      <if test="indexName != null">
+        #{indexName,jdbcType=VARCHAR},
+      </if>
+      <if test="isFollowed != null">
+        #{isFollowed,jdbcType=TINYINT},
+      </if>
+      <if test="dataSource != null">
+        #{dataSource,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="thor.freedom.crawler.bean.entity.IndexDO">
+    update crawler_index
+    <set>
+      <if test="createdTime != null">
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="indexCode != null">
+        index_code = #{indexCode,jdbcType=VARCHAR},
+      </if>
+      <if test="indexName != null">
+        index_name = #{indexName,jdbcType=VARCHAR},
+      </if>
+      <if test="isFollowed != null">
+        is_followed = #{isFollowed,jdbcType=TINYINT},
+      </if>
+      <if test="dataSource != null">
+        data_source = #{dataSource,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="thor.freedom.crawler.bean.entity.IndexDO">
+    update crawler_index
+    set created_time = #{createdTime,jdbcType=TIMESTAMP},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      index_code = #{indexCode,jdbcType=VARCHAR},
+      index_name = #{indexName,jdbcType=VARCHAR},
+      is_followed = #{isFollowed,jdbcType=TINYINT},
+      data_source = #{dataSource,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

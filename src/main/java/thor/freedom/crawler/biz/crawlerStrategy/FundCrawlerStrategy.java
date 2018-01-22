@@ -13,7 +13,7 @@ import thor.freedom.crawler.bean.common.DataSource;
 import thor.freedom.crawler.bean.entity.FundDO;
 import thor.freedom.crawler.crawler.BaseCrawler;
 import thor.freedom.crawler.dao.mapper.FundDOMapper;
-import thor.freedom.crawler.sys.SpringContextUtils;
+import thor.freedom.crawler.sys.SpringContextUtil;
 
 import java.util.Date;
 
@@ -25,7 +25,7 @@ public class FundCrawlerStrategy extends WebCrawler {
     public final static String INDEX = String.format(BASE, 1);
     private final static String URL_PRE = "https://e.lufunds.com/jijin/list";
 
-    private FundDOMapper fundDOMapper = (FundDOMapper) SpringContextUtils.getBean(FundDOMapper.class);
+    private FundDOMapper fundDOMapper = (FundDOMapper) SpringContextUtil.getBean(FundDOMapper.class);
 
     /**
      * This method receives two parameters. The first parameter is the page

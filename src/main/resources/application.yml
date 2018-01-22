@@ -21,6 +21,17 @@ spring:
         active: local
     resources:
         static-locations: classpath:/static/
+    mail:
+        host: smtp.163.com
+        username: luoyanjiewade@163.com
+        password: zucc416lyj
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    starttls:
+                        enable: true
+                        required: true
 #    freemarker:
 #        allow-request-override: false
 #        allow-session-override: false

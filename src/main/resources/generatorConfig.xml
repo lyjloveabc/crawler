@@ -37,7 +37,7 @@
         </javaClientGenerator>
 
         <!--表-->
-        <table catalog="freedom" tableName="crawler_fund" domainObjectName="FundDO"
+        <table catalog="freedom" tableName="crawler_index" domainObjectName="IndexDO"
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
