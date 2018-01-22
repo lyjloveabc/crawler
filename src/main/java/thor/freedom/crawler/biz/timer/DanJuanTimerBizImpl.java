@@ -25,7 +25,7 @@ import java.util.List;
  */
 @Service
 public class DanJuanTimerBizImpl implements DanJuanTimerBiz {
-    private static final String INDEX_VALUATION_URL = "https://timer.com/djapi/index_eva/dj";
+    private static final String INDEX_VALUATION_URL = "https://danjuanapp.com/djapi/index_eva/dj";
 
     @Autowired
     private IndexValuationDOMapper indexValuationDOMapper;
@@ -38,7 +38,11 @@ public class DanJuanTimerBizImpl implements DanJuanTimerBiz {
             throw new RuntimeException("蛋卷基金估值响应失败");
         }
 
-        DanJuanResultDTO danJuanResultDTO = new Gson().fromJson(responseBody.string(), DanJuanResultDTO.class);
+        String responseBodyString = responseBody.string();
+
+        System.out.println("responseBodyString:" + responseBodyString);
+
+        DanJuanResultDTO danJuanResultDTO = new Gson().fromJson(responseBodyString, DanJuanResultDTO.class);
 
         if (danJuanResultDTO == null) {
             throw new RuntimeException("蛋卷基金估值json解析失败");
