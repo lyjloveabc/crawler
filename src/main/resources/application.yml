@@ -25,10 +25,14 @@ spring:
         host: smtp.163.com
         username: luoyanjiewade@163.com
         password: zucc416lyj
+        default-encoding: UTF-8
         properties:
             mail:
                 smtp:
                     auth: true
+                    socketFactory:
+                        port: 465
+                        class: javax.net.ssl.SSLSocketFactory
                     starttls:
                         enable: true
                         required: true

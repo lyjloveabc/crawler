@@ -1,5 +1,10 @@
 package thor.freedom.crawler.biz.timer;
 
+import com.google.gson.Gson;
+import okhttp3.ResponseBody;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 import thor.freedom.crawler.bean.common.DataSource;
 import thor.freedom.crawler.bean.dto.timer.index.DanJuanResultDTO;
 import thor.freedom.crawler.bean.dto.timer.index.IndexOfDanJuanDTO;
@@ -7,11 +12,6 @@ import thor.freedom.crawler.bean.entity.IndexValuationDO;
 import thor.freedom.crawler.core.DateUtil;
 import thor.freedom.crawler.core.OkHttp3Util;
 import thor.freedom.crawler.dao.mapper.IndexValuationDOMapper;
-import com.google.gson.Gson;
-import okhttp3.ResponseBody;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.util.ObjectUtils;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -38,11 +38,7 @@ public class DanJuanTimerBizImpl implements DanJuanTimerBiz {
             throw new RuntimeException("蛋卷基金估值响应失败");
         }
 
-        String responseBodyString = responseBody.string();
-
-        System.out.println("responseBodyString:" + responseBodyString);
-
-        DanJuanResultDTO danJuanResultDTO = new Gson().fromJson(responseBodyString, DanJuanResultDTO.class);
+        DanJuanResultDTO danJuanResultDTO = new Gson().fromJson(responseBody.string(), DanJuanResultDTO.class);
 
         if (danJuanResultDTO == null) {
             throw new RuntimeException("蛋卷基金估值json解析失败");
@@ -53,8 +49,6 @@ public class DanJuanTimerBizImpl implements DanJuanTimerBiz {
 
         if (ObjectUtils.isEmpty(todayList) && danJuanResultDTO.getData() != null) {
             Date now = new Date();
-
-            System.out.println(now);
 
             for (IndexOfDanJuanDTO item : danJuanResultDTO.getData().getItems()) {
                 indexValuationDOMapper.insertSelective(
