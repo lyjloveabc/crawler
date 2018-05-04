@@ -1,6 +1,7 @@
 package thor.freedom.crawler.core;
 
 import com.google.common.collect.Lists;
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 
 import java.io.IOException;
@@ -9,6 +10,7 @@ import java.util.List;
 /**
  * Created by Thor on 2018/1/18.
  */
+@Slf4j
 public class OkHttp3Util {
     public static final String USER_AGENT = "User-Agent";
 
@@ -25,14 +27,66 @@ public class OkHttp3Util {
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:52.0) Gecko/20100101 Firefox/52.0"
     );
 
-    public static ResponseBody simpleGet(String url) throws IOException {
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .build();//获取客户端
+    public static OkHttpClient okHttpClient() {
+        return new OkHttpClient.Builder().build();
+    }
 
-        Request request = new Request.
-                Builder()
+    public static ResponseBody simpleGet(String url) throws IOException {
+        log.info("simpleGet: " + url);
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().build();//获取客户端
+
+        Request request = new Request.Builder()
                 .headers(OkHttp3Util.getRandomUserAgentHeaders())
                 .url(url)
+                .build();//构造请求
+
+        Response response = okHttpClient.newCall(request).execute();//执行请求，获得响应
+
+        if (response == null) {
+            throw new RuntimeException(String.format("URL [%s] error: the response is null", url));
+        }
+
+        return response.body();
+    }
+
+    public static ResponseBody simplePost(String url) throws IOException {
+        return simplePost(url, new FormBody.Builder().build());
+    }
+
+    public static ResponseBody simplePost(String url, RequestBody requestBody) throws IOException {
+        log.info("simplePost: " + url);
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().build();//获取客户端
+
+        Request request = new Request.Builder()
+                .headers(OkHttp3Util.getRandomUserAgentHeaders())
+                .url(url)
+                .post(requestBody)
+                .build();//构造请求
+
+        Response response = okHttpClient.newCall(request).execute();//执行请求，获得响应
+
+        if (response == null) {
+            throw new RuntimeException(String.format("URL [%s] error: the response is null", url));
+        }
+
+        return response.body();
+    }
+
+    public static ResponseBody post(String url, Headers headers) throws IOException {
+        return post(url, headers, new FormBody.Builder().build());
+    }
+
+    public static ResponseBody post(String url, Headers headers, RequestBody requestBody) throws IOException {
+        log.info("post: " + url);
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().build();//获取客户端
+
+        Request request = new Request.Builder()
+                .headers(headers)
+                .url(url)
+                .post(requestBody)
                 .build();//构造请求
 
         Response response = okHttpClient.newCall(request).execute();//执行请求，获得响应
