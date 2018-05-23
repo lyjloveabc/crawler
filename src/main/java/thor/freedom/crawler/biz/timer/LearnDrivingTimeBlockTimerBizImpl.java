@@ -60,7 +60,7 @@ public class LearnDrivingTimeBlockTimerBizImpl implements LearnDrivingTimeBlockT
             throw new RuntimeException("找教练获取预约时间json解析失败");
         }
 
-
+        System.out.println(new Gson().toJson(learnDrivingTimeBlockDTO) );
 
         System.out.println(":" + learnDrivingTimeBlockDTO);
     }
