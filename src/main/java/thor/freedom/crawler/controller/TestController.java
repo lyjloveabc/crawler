@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import thor.freedom.crawler.biz.timer.IndexValuationWarnTimerBiz;
+import thor.freedom.crawler.biz.timer.ItlBugInfoBiz;
 import thor.freedom.crawler.timer.warn.IndexValuationWarnTimer;
 
 import java.io.IOException;
@@ -23,6 +24,9 @@ public class TestController {
     @Autowired
     private IndexValuationWarnTimerBiz indexValuationWarn;
 
+    @Autowired
+    private ItlBugInfoBiz itlBugInfoBiz;
+
     @GetMapping("iv")
     public void iv() throws IOException, ParseException {
         danJuanBiz.crawlIndexValuation();
@@ -31,5 +35,10 @@ public class TestController {
     @GetMapping("warn")
     public void warn() {
         indexValuationWarn.indexValuationWarn();
+    }
+
+    @GetMapping("bug")
+    public void bug() throws IOException {
+        itlBugInfoBiz.bugInfo();
     }
 }

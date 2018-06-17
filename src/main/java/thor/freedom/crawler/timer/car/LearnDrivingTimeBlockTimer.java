@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * Created by Thor on 2018/5/4.
  */
-@Component
+//@Component
 public class LearnDrivingTimeBlockTimer {
     @Autowired
     private LearnDrivingTimeBlockTimerBiz learnDrivingTimeBlock;
