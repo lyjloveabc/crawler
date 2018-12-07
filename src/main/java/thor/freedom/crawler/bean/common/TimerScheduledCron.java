@@ -10,4 +10,6 @@ public interface TimerScheduledCron {
 
     //String LEARN_DRIVING_TIME_BLOCK = "0 0/1 * * * ?";
     String LEARN_DRIVING_TIME_BLOCK = "0/10 * * * * ?";
+
+    String YK_SIGN_IN = "0/10 * * * * ?";
 }
